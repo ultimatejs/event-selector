@@ -50,8 +50,10 @@ EventSelector = {
 		_applyEventHandlerWithProps(component={}, method, args, props) {
 			let oldProps = component.props; 					//swap props to Blaze helper/event context
 			component.props = props; 									//which is supplied props from event
+			component.ownProps = oldProps;						//continue to provide access to `oldProps if necessary
 			let ret = method.apply(component, args); 	//gather return value
 			component.props = oldProps; 							//put props back for other methods to utilize like normal
+			delete component.ownProps;
 			
 			return ret;
 		},
