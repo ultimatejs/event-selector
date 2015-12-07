@@ -23,15 +23,19 @@ EventSelector = {
 			let $el = $(selector, ReactDOM.findDOMNode(this));
 			let self = this;
 
-			$el.bind(event+'.'+this._reactId(), function(e) {
+			$el.bind(event+'.'+this._namespace(), function(e) {
 				let component = self._findComponent($(this));
 				self._applyEventHandlerWithProps(self, handler, [e], component.props);
 			});
 		});
 	},
 	unbindEvents() {
-		let $el = $(ReactDOM.findDOMNode(this));
-		$el.unbind('.'+this._reactId());
+		_.each(this.events(), (handler, key) => {
+			let [event, selector] = this._eventAndSelector(key);
+			let $el = $(selector, ReactDOM.findDOMNode(this));
+			
+			$el.unbind('.'+this._namespace());
+		});
 	},
 
 
@@ -74,6 +78,9 @@ EventSelector = {
 	},
 	_reactId() {
 		return this._reactInternalInstance && this._reactInternalInstance._rootNodeID;
+	},
+	_namespace() {
+		return btoa(this._reactId());
 	},
 	_eventsRegex: /^(click|dblclick|focus|blur|change|mouseenter|mouseleave|mousedown|mouseup|keydown|keypress|keyup|touchdown|touchmove|touchup)(\s|$)/
 };
