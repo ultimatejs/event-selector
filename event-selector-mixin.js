@@ -51,10 +51,14 @@ EventSelector = {
 		let oldProps = component.props; 					//swap props to Blaze helper/event context
 		component.props = props; 									//which is supplied props from event
 		component.ownProps = oldProps;						//continue to provide access to `oldProps if necessary
+		component.child = component;							//provide access to child, perhaps for polymorphic usage
+		
 		let ret = method.apply(component, args); 	//gather return value
+		
 		component.props = oldProps; 							//put props back for other methods to utilize like normal
 		delete component.ownProps;
-	
+		delete component.child;
+		
 		return ret;
 	},
 
