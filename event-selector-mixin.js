@@ -23,7 +23,7 @@ EventSelector = {
 			let $el = $(selector, ReactDOM.findDOMNode(this));
 			let self = this;
 
-			$el.bind(event+'.'+this._namespace(), function(e) {
+			$el.on(event+'.'+this._namespace(), function(e) {
 				let component = self._findComponent($(this));
 				self._applyEventHandlerWithProps(self, handler, [e], component.props);
 			});
@@ -34,7 +34,7 @@ EventSelector = {
 			let [event, selector] = this._eventAndSelector(key);
 			let $el = $(selector, ReactDOM.findDOMNode(this));
 			
-			$el.unbind('.'+this._namespace());
+			$el.off('.'+this._namespace());
 		});
 	},
 
