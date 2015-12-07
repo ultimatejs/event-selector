@@ -22,11 +22,11 @@ EventSelector = {
 			let [event, selector] = this._eventAndSelector(key);
 			let $el = $(selector, ReactDOM.findDOMNode(this));
 			let self = this;
-		
-	    $el.bind(event+'.'+this._reactId(), function(e) {
+
+			$el.bind(event+'.'+this._reactId(), function(e) {
 				let component = self._findComponent($(this));
 				self._applyEventHandlerWithProps(self, handler, [e], component.props);
-	    });
+			});
 		});
 	},
 	unbindEvents() {
