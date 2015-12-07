@@ -1,7 +1,7 @@
 Package.describe({
 	name: "ultimatejs:event-selector",
 	summary: "Blaze-style event selectors (with React-style contexts)",
-	version: '0.0.2',
+	version: '0.0.3',
 	documentation: 'README.md',
 	git: 'https://github.com/ultimatejs/event-selector'
 });
