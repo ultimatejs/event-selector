@@ -1,5 +1,3 @@
-if(Meteor.isServer) return EventSelector = {}; //so server side rendering isn't broken
-
 EventSelector = {
 	nodes: {},
 
