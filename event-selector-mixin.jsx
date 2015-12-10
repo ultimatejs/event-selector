@@ -15,6 +15,7 @@ EventSelector = {
 	},
 
 
+
 	bindEvents() {
 		_.each(this.events(), (handler, key) => {
 			let [event, selector] = this._eventAndSelector(key);

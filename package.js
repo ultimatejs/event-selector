@@ -1,24 +1,19 @@
 Package.describe({
 	name: "ultimatejs:event-selector",
 	summary: "Blaze-style event selectors (with React-style contexts)",
-	version: '0.0.5',
+	version: '0.0.6',
 	documentation: 'README.md',
 	git: 'https://github.com/ultimatejs/event-selector'
 });
 
 Package.onUse(function (api) {
-	api.versionsFrom('METEOR@1.2.1');
+	api.use('ultimatejs:ultimate-react@0.0.0');
 	
-	api.use('ecmascript@0.1.5');
-	
-	api.use('underscore');
+	api.use('underscore@1.0.0');
 	api.use('ultimatejs:underscore-mixin@0.0.0');
 	
-	api.use('ultimatejs:helper-lookup@0.0.0');
-	api.imply('ultimatejs:helper-lookup@0.0.0');
-	
 	api.addFiles([
-		'event-selector-mixin.js',
+		'event-selector-mixin.jsx',
 	]);
 	
 	api.export('EventSelector');
